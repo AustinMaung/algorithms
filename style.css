@@ -14,6 +14,7 @@
   }
 .line {
     font-size:20px;
+    padding:3px;
     background-color: orange;
 }
 sup{
@@ -43,7 +44,10 @@ sub{
     /* margin-top: 0; */
     text-align: center;
 }
-
+span.frac.highlight {
+    background: #E1ECF4;
+    border: 1px dotted #39739d;
+}
 /* .supsub {
     display: inline-block;
 } */
