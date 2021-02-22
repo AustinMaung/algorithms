@@ -1,0 +1,61 @@
+.textbox {
+    position:absolute;
+    overflow:hidden;
+    resize:both;
+    background-color: red;
+    width:300px;  
+}
+.draggable {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+  }
+.line {
+    font-size:20px;
+    background-color: orange;
+}
+sup{
+    display: inline-block;
+    font-size:16px;
+    position: relative;
+    bottom: .3em;
+}
+sub{
+    display: inline-block;
+    font-size:16px;
+    position: relative;
+    top: .3em;
+}
+
+.frac {
+    display: inline-block;
+    vertical-align: middle;  
+}
+.numer {
+    border-bottom: 1px solid black;
+    /* margin-bottom: 0; */
+    text-align: center;
+}
+.denom {
+    border-top: 1px solid black;
+    /* margin-top: 0; */
+    text-align: center;
+}
+
+/* .supsub {
+    display: inline-block;
+} */
+
+/* .supsub sup,
+.supsub sub {
+    position: relative;
+    display: block;
+    font-size: 1em;
+    line-height: 1.2;
+}
+
+.supsub sub {
+    top: .3em;
+} */
