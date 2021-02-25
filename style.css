@@ -33,7 +33,11 @@ sub{
 .frac {
     display: inline-block;
     vertical-align: middle;  
+    /* display: inline-flex;
+    flex-direction: row;
+    align-items:baseline; */
 }
+
 .numer {
     border-bottom: 1px solid black;
     /* margin-bottom: 0; */
