@@ -1,4 +1,4 @@
-
+import Dropdown from './Dropdown.js'
 
 function Navbar() {
   return(
@@ -24,6 +24,8 @@ function Page() {
          fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
         culpa qui officia deserunt mollit anim id est laborum.
       </p>
+      <Dropdown />
+      <Dropdown />
     </div>
   );
 }
