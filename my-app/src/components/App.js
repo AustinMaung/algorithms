@@ -2,18 +2,20 @@
 
 function Navbar() {
   return(
-    <div id="Navbar" style={{backgroundColor:"lightblue",minHeight:"40px",width:"100%",margin:"0"}}>navbar</div>
+    <div id="Navbar" style={{backgroundColor:"lightblue",minHeight:"20px",width:"100%",
+    padding:"15px",margin:"0"}}>navbar</div>
   );
 }
 function Toolbar() {
   return(
-    <div style={{backgroundColor:"lightgrey",minHeight:"60px",width:"100%",margin:"0"}}>toolbar</div>
+    <div style={{backgroundColor:"lightgrey",minHeight:"40px",width:"100%",
+    padding:"15px",margin:"0"}}>toolbar</div>
   );
 }
 function Page() {
   return(
-    <div contentEditable={true} style={{backgroundColor:"red",minHeight:"100vh",maxWidth:"800px",
-    display: "block",marginLeft: "auto",marginRight: "auto"}}>
+    <div contentEditable={true} style={{backgroundColor:"red",minHeight:"100vh",maxWidth:"700px",
+    display: "block",marginLeft: "auto",marginRight: "auto",padding:"2%"}}>
       <p style={{marginTop:"0"}}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
