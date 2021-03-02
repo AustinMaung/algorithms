@@ -44,7 +44,7 @@ class Dropdown extends React.Component {
             elems = <div />;
         }
         return (
-            <div contentEditable={"plaintext-only"} suppressContentEditableWarning={true} style={container_style}>
+            <div contentEditable={"plaintext-only"} suppressContentEditableWarning={true} spellcheck="false" style={container_style}>
                 <div onClick={this.handleClick} style={{cursor: "pointer"}}> can be clicked</div>
                 {elems}
             </div>
