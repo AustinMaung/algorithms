@@ -14,15 +14,38 @@ class Dropdown extends React.Component {
         }));
     }
     render() {
+        const container_style = {
+            backgroundColor: "lightblue",
+            margin: "6px",
+            padding: "6px",
+            borderRadius: "10px",
+            border: "2px solid black",
+            textAlign: "center",
+            fontSize: "20px",
+            outline: "0px solid transparent"
+            
+        }
+        const core_style = {
+            fontSize: "16px",
+            textAlign: "left"
+        }
+
         let elems;
         if(this.state.visible){
-            elems = <div>can become not seen</div>;
+            elems = <div style={core_style}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+            culpa qui officia deserunt mollit anim id est laborum.
+            </div>;
         } else {
             elems = <div />;
         }
         return (
-            <div>
-                <div onClick={this.handleClick}> can be clicked</div>
+            <div contentEditable={"plaintext-only"} suppressContentEditableWarning={true} style={container_style}>
+                <div onClick={this.handleClick} style={{cursor: "pointer"}}> can be clicked</div>
                 {elems}
             </div>
         )

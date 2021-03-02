@@ -14,16 +14,12 @@ function Toolbar() {
 }
 function Page() {
   return(
-    <div contentEditable={true} style={{backgroundColor:"red",minHeight:"100vh",maxWidth:"700px",
-    display: "block",marginLeft: "auto",marginRight: "auto",padding:"2%"}}>
-      <p style={{marginTop:"0"}}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-         fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-        culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+    <div style={{backgroundColor:"beige",minHeight:"100vh",maxWidth:"700px",
+    display: "block",marginLeft: "auto",marginRight: "auto",padding:"2%",
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)"}}>
+      {/* <p style={{marginTop:"0"}}> */}
+
+      {/* </p> */}
       <Dropdown />
       <Dropdown />
     </div>
