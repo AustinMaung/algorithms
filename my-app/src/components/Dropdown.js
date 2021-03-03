@@ -1,10 +1,13 @@
 import React from 'react';
+import Textbox from './Textbox.js';
 
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible: true
+            visible: true,
+            bg_color: "lightblue",
+            header_text: "can be clicked"
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -15,37 +18,37 @@ class Dropdown extends React.Component {
     }
     render() {
         const container_style = {
-            backgroundColor: "lightblue",
-            margin: "6px",
+            backgroundColor: this.state.bg_color,
             padding: "6px",
-            borderRadius: "10px",
-            border: "2px solid black",
             textAlign: "center",
             fontSize: "20px",
             outline: "0px solid transparent"
-            
         }
         const core_style = {
             fontSize: "16px",
-            textAlign: "left"
+            textAlign: "left",
+            outline: "0px solid transparent",
+            margin: "2%"
+            // marginLeft:"2%",
+            // marginRight:"2%"
         }
 
         let elems;
         if(this.state.visible){
             elems = <div style={core_style}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-            culpa qui officia deserunt mollit anim id est laborum.
+                <Textbox />
+                this is a connector
+                <Textbox />
             </div>;
         } else {
             elems = <div />;
         }
         return (
-            <div contentEditable={"plaintext-only"} suppressContentEditableWarning={true} spellcheck="false" style={container_style}>
-                <div onClick={this.handleClick} style={{cursor: "pointer"}}> can be clicked</div>
+            <div spellcheck="false" style={container_style}>
+                <div contentEditable={"plaintext-only"} suppressContentEditableWarning={true} 
+                onClick={this.handleClick} style={{cursor: "pointer",outline: "0px solid transparent"}}>
+                    {this.state.header_text}
+                </div>
                 {elems}
             </div>
         )

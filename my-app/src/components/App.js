@@ -14,13 +14,13 @@ function Toolbar() {
 }
 function Page() {
   return(
-    <div style={{backgroundColor:"beige",minHeight:"100vh",maxWidth:"700px",
-    display: "block",marginLeft: "auto",marginRight: "auto",padding:"2%",
+    <div style={{backgroundColor:"white",minHeight:"100vh",maxWidth:"700px",
+    display: "block",marginLeft: "auto",marginRight: "auto",
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)"}}>
       {/* <p style={{marginTop:"0"}}> */}
 
       {/* </p> */}
-      <Dropdown />
+      {/* <Dropdown /> */}
       <Dropdown />
     </div>
   );
