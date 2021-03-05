@@ -28,16 +28,15 @@ class Dropdown extends React.Component {
             fontSize: "16px",
             textAlign: "left",
             outline: "0px solid transparent",
-            margin: "2%"
-            // marginLeft:"2%",
-            // marginRight:"2%"
+            paddingLeft: "12px",
+            paddingRight: "12px"
+            
         }
 
         let elems;
         if(this.state.visible){
             elems = <div style={core_style}>
                 <Textbox />
-                this is a connector
                 <Textbox />
             </div>;
         } else {

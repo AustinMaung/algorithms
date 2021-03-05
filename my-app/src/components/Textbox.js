@@ -10,8 +10,10 @@ class Dropdown extends React.Component {
     render() {
         const container_style = {
             backgroundColor: "white",
-
             padding: "6px",
+            // margin: "6px",
+            marginTop: "12px",
+            marginBottom: "12px",
             // borderRadius: "10px",
             border: "2px solid black",
             fontSize: "16px",
