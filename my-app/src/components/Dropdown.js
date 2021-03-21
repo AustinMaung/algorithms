@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import ReactQuill, {Quill} from 'react-quill';
-// {addStyles, EditableMathField} from
-import 'react-mathquill';
-import mathQuillBlot from "quill-mathquill-blot";
+import {addStyles, EditableMathField} from 'react-mathquill';
+// import mathQuillBlot from "quill-mathquill-blot";
 
 // import "react-katex";
 // import mathquill4quill from 'mathquill4quill';
@@ -11,29 +10,29 @@ import 'react-quill/dist/quill.snow.css'
 
 // import Textbox from './Textbox.js';
 
-// addStyles()
-// const Math = () => {
-//     const [latex, setLatex] = useState('\\frac{1}{\\sqrt{2}}\\cdot 2')
-//     const [text, setText] = useState('')
+addStyles()
+const Math = () => {
+    const [latex, setLatex] = useState('\\frac{1}{\\sqrt{2}}\\cdot 2')
+    const [text, setText] = useState('')
 
-//     return (
-//         <div>
-//             <EditableMathField 
-//             className="mathquill-example-field"
-//             latex={latex}
+    return (
+        <div>
+            <EditableMathField 
+            className="mathquill-example-field"
+            latex={latex}
 
-//             onChange={(mathField) => {
-//                 setLatex(mathField.latex())
-//                 setText(mathField.text())
-//             }}
-//             mathquillDidMount={(mathField) => {
-//                 setText(mathField.text())
-//             }}
-//             />
-//             {/* <p>{latex}</p> */}
-//         </div>
-//     )
-// }
+            onChange={(mathField) => {
+                setLatex(mathField.latex())
+                setText(mathField.text())
+            }}
+            mathquillDidMount={(mathField) => {
+                setText(mathField.text())
+            }}
+            />
+            {/* <p>{latex}</p> */}
+        </div>
+    )
+}
 
 
 const CustomButton = () => <span className="octicon octicon-star" >★</span>
@@ -42,20 +41,19 @@ const CustomButton = () => <span className="octicon octicon-star" >★</span>
  * Event handler to be attached using Quill toolbar module
  * http://quilljs.com/docs/modules/toolbar/
  */
-const BlockEmbed = Quill.import('blots/block/embed');
+const BlockEmbed = Quill.import('blots/embed');
 
 class Test extends BlockEmbed {
   static blotName = "Test"
   static className = "embed-Test"
-  static tagName = "div"
+  static tagName = "span"
   static create(value) {
-    const node = super.create(value);
-    // node.setAttribute('contenteditable', 'false');
-    // node.setAttribute('width', '100%');
-    // node.setAttribute('backgroundColor', 'red')
-    node.innerHTML = value + "<i>doggy</i>";
-    node.style.backgroundColor = 'red'
-    //Set custom HTML
+    let node = super.create(value);
+    // give it some margin
+    node.setAttribute('style', "text-decoration: underline;background-color : lightgreen;");
+    node.setAttribute('data-proc', value.value);
+    node.innerHTML = value;
+    // node.innerHTML = <Math />
     return node;
   }
 }
@@ -68,7 +66,8 @@ function insertStar () {
   const cursorPosition = this.quill.getSelection().index
   // this.quill.insertEmbed(cursorPosition,"hr","null")
   // this.quill.insertEmbed(10, 'image', 'https://quilljs.com/images/cloud.png');
-  this.quill.insertEmbed(cursorPosition,'Test',`div`)
+  var cObj = {text : 'hellow world', value : 'value'};
+  this.quill.insertEmbed(cursorPosition,'Test',"x")
   // this.quill.insertEmbed(cursorPosition, "mathQuill", "x");
 }
 
