@@ -1,4 +1,4 @@
-import Dropdown from './Dropdown.js'
+import Dropdown from './Dropdown.js' 
 
 function format(command, value) {
   console.log('yea')
@@ -8,7 +8,11 @@ function format(command, value) {
 function Navbar() {
   return(
     <div id="Navbar" style={{backgroundColor:"lightblue",minHeight:"20px",width:"100%",
-    padding:"15px",margin:"0"}}>navbar</div>
+    padding:"15px",margin:"0"}}>
+      navbar
+      
+      yep
+    </div>
   );
 }
 function Toolbar() {

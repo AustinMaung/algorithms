@@ -29,9 +29,17 @@ class Dropdown extends React.Component {
     }
     render() {
         const container_style = {
+<<<<<<< HEAD
             // backgroundColor: "white",
 
             // padding: "6px",
+=======
+            backgroundColor: "white",
+            padding: "6px",
+            // margin: "6px",
+            marginTop: "12px",
+            marginBottom: "12px",
+>>>>>>> 608c753d514d382e6324906017d304c7b6db1e3b
             // borderRadius: "10px",
             // border: "2px solid black",
             // fontSize: "16px",
