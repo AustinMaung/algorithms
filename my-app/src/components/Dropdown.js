@@ -43,18 +43,53 @@ const CustomButton = () => <span className="octicon octicon-star" >★</span>
  */
 const BlockEmbed = Quill.import('blots/embed');
 
+// class Test extends BlockEmbed {
+//   static blotName = "Test"
+//   static className = "embed-Test"
+//   static tagName = "span"
+//   static create(value) {
+//     let node = super.create(value);
+//     node.setAttribute('style', "text-decoration: underline;background-color : lightgreen;");
+//     node.setAttribute('data-proc', value.value);
+//     node.innerHTML = value;
+//     // node.mathField = <Math />
+//     return node;
+//   }
+// }
 class Test extends BlockEmbed {
   static blotName = "Test"
   static className = "embed-Test"
   static tagName = "span"
-  static create(value) {
-    let node = super.create(value);
-    // give it some margin
-    node.setAttribute('style', "text-decoration: underline;background-color : lightgreen;");
-    node.setAttribute('data-proc', value.value);
-    node.innerHTML = value;
-    // node.innerHTML = <Math />
+  static create(content) {
+    let node = super.create();
+    node.setAttribute("contenteditable", false);
+
+    var config = {
+      spaceBehavesLikeTab: true,
+    };
+
+    let span = document.createElement("span");
+
+    node.appendChild(span);
+    console.log(node);
+
+
+    this.MQ = MathQuill.getInterface(2); // eslint-disable-line
+    node.mathField = this.MQ.MathField(span, config);
+
+    node.mathField.latex(content);
+
+    node.addEventListener("click", function() {
+      node.mathField.focus();
+    });
+
     return node;
+  }
+  static value(node) {
+    return node.mathField.latex();
+  }
+  update(mutations, context) {
+    console.log(mutations, context);
   }
 }
 
@@ -66,8 +101,11 @@ function insertStar () {
   const cursorPosition = this.quill.getSelection().index
   // this.quill.insertEmbed(cursorPosition,"hr","null")
   // this.quill.insertEmbed(10, 'image', 'https://quilljs.com/images/cloud.png');
-  var cObj = {text : 'hellow world', value : 'value'};
+  // var cObj = {text : 'hellow world', value : 'value'};
+  this.quill.insertText(cursorPosition, " ")
   this.quill.insertEmbed(cursorPosition,'Test',"x")
+  this.quill.insertText(cursorPosition, " ")
+  this.quill.setSelection(cursorPosition + 3)
   // this.quill.insertEmbed(cursorPosition, "mathQuill", "x");
 }
 
@@ -114,6 +152,7 @@ class Dropdown extends React.Component {
           modules={Dropdown.modules}
         />
         {/* <Math /> */}
+        <Math />
       </div>
     )
   }
