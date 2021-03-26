@@ -86,7 +86,7 @@ class Test extends BlockEmbed {
     return node;
   }
   static value(node) {
-    return node.mathField.latex();
+    return node
   }
   update(mutations, context) {
     console.log(mutations, context);
