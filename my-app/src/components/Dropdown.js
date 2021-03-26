@@ -34,7 +34,6 @@ const Math = () => {
     )
 }
 
-
 const CustomButton = () => <span className="octicon octicon-star" >★</span>
 
 /*
@@ -43,19 +42,6 @@ const CustomButton = () => <span className="octicon octicon-star" >★</span>
  */
 const BlockEmbed = Quill.import('blots/embed');
 
-// class Test extends BlockEmbed {
-//   static blotName = "Test"
-//   static className = "embed-Test"
-//   static tagName = "span"
-//   static create(value) {
-//     let node = super.create(value);
-//     node.setAttribute('style', "text-decoration: underline;background-color : lightgreen;");
-//     node.setAttribute('data-proc', value.value);
-//     node.innerHTML = value;
-//     // node.mathField = <Math />
-//     return node;
-//   }
-// }
 class Test extends BlockEmbed {
   static blotName = "Test"
   static className = "embed-Test"
@@ -94,19 +80,13 @@ class Test extends BlockEmbed {
 }
 
 Quill.register(Test, true);
-// mathQuillBlot.register(Quill);
-// Quill.register(Math, true)
 
 function insertStar () {
   const cursorPosition = this.quill.getSelection().index
-  // this.quill.insertEmbed(cursorPosition,"hr","null")
-  // this.quill.insertEmbed(10, 'image', 'https://quilljs.com/images/cloud.png');
-  // var cObj = {text : 'hellow world', value : 'value'};
   this.quill.insertText(cursorPosition, " ")
   this.quill.insertEmbed(cursorPosition,'Test',"x")
   this.quill.insertText(cursorPosition, " ")
   this.quill.setSelection(cursorPosition + 3)
-  // this.quill.insertEmbed(cursorPosition, "mathQuill", "x");
 }
 
 /*
@@ -142,17 +122,22 @@ class Dropdown extends React.Component {
   	this.setState({ editorHtml: html });
   }
 
+  logContent(){
+    console.log("yo")
+  }
+
   render() {
+    // this.logContent()
     return (
       <div className="text-editor">
         <CustomToolbar />
         <ReactQuill
-          defaultValue={this.state.editorHtml}
-          onChange={this.handleChange}
-          modules={Dropdown.modules}
+        defaultValue={this.state.editorHtml}
+        onChange={this.handleChange}
+        modules={Dropdown.modules}
         />
         {/* <Math /> */}
-        <Math />
+        <button onClick={this.logContent}> as html content</button>
       </div>
     )
   }
