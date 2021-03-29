@@ -1,173 +1,98 @@
-import React, { useState } from 'react';
-import ReactQuill, {Quill} from 'react-quill';
-import {addStyles, EditableMathField} from 'react-mathquill';
-// import mathQuillBlot from "quill-mathquill-blot";
+import React from 'react';
 
-// import "react-katex";
-// import mathquill4quill from 'mathquill4quill';
-import 'react-quill/dist/quill.snow.css'
-// import 'mathquill4quill/mathquill4quill.css';
+import EditorJs from '@natterstefan/react-editor-js';
+import Paragraph from '@editorjs/paragraph'
+import List from '@editorjs/list'
+import Table from '@editorjs/table'
+import Embed from '@editorjs/embed'
+import Header from '@editorjs/header'
+import Marker from '@editorjs/marker'
+import SimpleImage from '@editorjs/simple-image'
+import ImageTool from '@editorjs/image'
 
-// import Textbox from './Textbox.js';
+// import { data } from "react-editor-js/data";
 
-addStyles()
-const Math = () => {
-    const [latex, setLatex] = useState('\\frac{1}{\\sqrt{2}}\\cdot 2')
-    const [text, setText] = useState('')
-
-    return (
-        <div>
-            <EditableMathField 
-            className="mathquill-example-field"
-            latex={latex}
-
-            onChange={(mathField) => {
-                setLatex(mathField.latex())
-                setText(mathField.text())
-            }}
-            mathquillDidMount={(mathField) => {
-                setText(mathField.text())
-            }}
-            />
-            {/* <p>{latex}</p> */}
-        </div>
-    )
+export const EDITOR_JS_TOOLS = {
+  paragraph: {
+    class: Paragraph,
+    inlineToolbar: true
+  },
+  list: {
+    class: List,
+    inlineToolbar: true
+  },
+  table: {
+    class: Table,
+    inlineToolbar: true
+  },
+  embed: Embed,
+  header: {
+    class: Header,
+    inlineToolbar: true
+  },
+  marker: Marker,
+  
+  // image: {
+  //   class: ImageTool,
+  //   config: {
+  //     endpoints: {
+  //       byFile: 'http://localhost:3000/uploadFile', // Your backend file uploader endpoint
+  //       byUrl: 'http://localhost:3000/fetchUrl', // Your endpoint that provides uploading by Url
+  //     }
+  //   }
+  // }
+  
 }
 
-const CustomButton = () => <span className="octicon octicon-star" >★</span>
-
-/*
- * Event handler to be attached using Quill toolbar module
- * http://quilljs.com/docs/modules/toolbar/
- */
-const BlockEmbed = Quill.import('blots/embed');
-
-class Test extends BlockEmbed {
-  static blotName = "Test"
-  static className = "embed-Test"
-  static tagName = "span"
-  static create(content) {
-    let node = super.create();
-    node.setAttribute("contenteditable", false);
-
-    var config = {
-      spaceBehavesLikeTab: true,
-    };
-
-    let span = document.createElement("span");
-
-    node.appendChild(span);
-    console.log(node);
-
-
-    this.MQ = MathQuill.getInterface(2); // eslint-disable-line
-    node.mathField = this.MQ.MathField(span, config);
-
-    node.mathField.latex(content);
-
-    node.addEventListener("click", function() {
-      node.mathField.focus();
-    });
-
-    return node;
-  }
-  static value(node) {
-    return node
-  }
-  update(mutations, context) {
-    console.log(mutations, context);
-  }
-}
-
-Quill.register(Test, true);
-
-function insertStar () {
-  const cursorPosition = this.quill.getSelection().index
-  this.quill.insertText(cursorPosition, " ")
-  this.quill.insertEmbed(cursorPosition,'Test',"x")
-  this.quill.insertText(cursorPosition, " ")
-  this.quill.setSelection(cursorPosition + 3)
-}
-
-/*
- * Custom toolbar component including insertStar button and dropdowns
- */
-
-const CustomToolbar = () => (
-  <div id="toolbar">
-    <select className="ql-size"></select>
-    <select className="ql-align"></select>
-    <button className="ql-bold"></button>
-    <button className="ql-italic"></button>
-    <select className="ql-color" />
-    <button className="ql-code-block"></button>
-    <button className="ql-insertStar">
-        <CustomButton />
-    </button>
-    {/* <button className="ql-mathQuill"></button> */}
-  </div>
-)
-
-/*
- * Dropdown component with custom toolbar and content containers
- */
+// class Dropdown extends React.Component{
+//   editor = null
+  
+//   printStuff() 
+//   {
+    
+//       editor.save().then((outputData) => {
+//         console.log('Article data: ', outputData)
+//       }).catch((error) => {
+//         console.state.log('Saving failed: ', error)
+//       });
+//   }
+//   render() {
+    
+//     return(
+//       // 
+//       <div>
+//         <EditorJs 
+//       tools={EDITOR_JS_TOOLS} 
+//       editorInstance={editorInstance => {
+//         // invoked once the editorInstance is ready
+//         this.editor = editorInstance
+//       }}
+//       />
+//         <button onClick={this.printStuff}>hello</button>
+//       </div>
+//     )
+//   }
+// }
 class Dropdown extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { editorHtml: '' }
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange (html) {
-  	this.setState({ editorHtml: html });
-  }
-
-  logContent(){
-    console.log("yo")
+  async onSave() {
+    const outputData = await this.editorInstance.save();
+    console.log("outputData", outputData);
   }
 
   render() {
-    // this.logContent()
     return (
-      <div className="text-editor">
-        <CustomToolbar />
-        <ReactQuill
-        defaultValue={this.state.editorHtml}
-        onChange={this.handleChange}
-        modules={Dropdown.modules}
+      <>
+        <button onClick={this.onSave.bind(this)} type="button">
+          Save Content (check console output)
+        </button>
+        <EditorJs
+          editorInstance={instance => (this.editorInstance = instance)}
+          tools={EDITOR_JS_TOOLS}
+          // data={data}
         />
-        {/* <Math /> */}
-        <button onClick={this.logContent}> as html content</button>
-      </div>
-    )
+      </>
+    );
   }
 }
-
-/*
- * Quill modules to attach to editor
- * See http://quilljs.com/docs/modules/ for complete options
- */
-Dropdown.modules = {
-  toolbar: {
-    container: "#toolbar",
-    handlers: {
-      "insertStar": insertStar,
-    }
-  }
-}
-
-/*
- * Quill editor formats
- * See http://quilljs.com/docs/formats/
- */
-Dropdown.formats = [
-  'header', 'font', 'size','align',
-  'bold', 'italic', 'underline', 'strike', 'blockquote',
-  'list', 'bullet', 'indent',
-  'link', 'image', 'color',
-]
-
-
-  
 
 export default Dropdown;
