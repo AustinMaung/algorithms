@@ -15,6 +15,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.0",
+    "firebase": "^8.3.1",
     "katex": "^0.13.0",
     "mathquill": "^0.10.1-a",
     "quill-mathquill-blot": "^1.9.0",
